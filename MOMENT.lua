@@ -1,9 +1,7 @@
-p_classcode = "SPFUT"
+p_classcode = "SPBFUT"
 p_seccode = "SiH6"
 is_run = true
 count = 1
-
-l_file = io.open("C:" .. tostring(count) .. ".txt", "w")
 
 function main()
 
@@ -17,13 +15,14 @@ function OnStop(stop_flag)
     l_file:close()
 end
 
+l_file = io.open("C:" .. tostring(count) .. ".txt", "w")
+
 function OnQuote(class_code, sec_code)
     if class_code == p_classcode and sec_code == p_seccode then
         tb = getQuoteLevel2(class_code, sec_code)
 
-        for i = 1, 2, 1 do --tb.offer_count
-        l_file:write(tostring(tb.offer[i].price) .. ";  " ..
-                tostring(tb.offer[i].quantity) .. ";  " .. os.time().. "\n")
-        end
+        l_file:write(tostring(tb.offer[1].price) .. ";  " ..
+                tostring(tb.offer[1].quantity) .. ";  " .. os.date("%X, дата: %x").. "\n")
+                
     end
 end
