@@ -21,8 +21,7 @@ function OnQuote(class_code, sec_code)
     if class_code == p_classcode and sec_code == p_seccode then
         tb = getQuoteLevel2(class_code, sec_code)
 
-        l_file:write(tostring(tb.offer[1].price) .. ";  " ..
-                tostring(tb.offer[1].quantity) .. ";  " .. os.date("%X, дата: %x").. "\n")
-                
+        l_file:write(tostring(tb.bid[tb.bid_count + 0].price) .. ";  " ..
+                tostring(tb.offer[1].price) .. ";  " .. os.date("%X, дата: %x") .. "\n")
     end
 end
